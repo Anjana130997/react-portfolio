@@ -1,0 +1,149 @@
+.about {
+  padding: 100px 10%;
+  color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Title */
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #00ced1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  animation: fadeSlideDown 1s ease;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  margin: 0 auto 50px;
+  border-radius: 4px;
+  background: var(--accent, #00ced1);
+  animation: expand 1s ease-in-out;
+}
+
+/* Two-column layout */
+.about-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1 1 150px;
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.8;
+}
+
+/* GIF/Image Section */
+.about-gif {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-gif img {
+  width: 100%; /* Smaller size */
+  max-width: 250px; /* Limit maximum width */
+  height: auto;
+  border-radius: 15px;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for image */
+.about-gif img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Floating animation for GIF */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Animations */
+@keyframes expand {
+  from { width: 0; opacity: 0; }
+  to { width: 80px; opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealFade 0.8s ease forwards;
+}
+
+@keyframes revealFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-gif img {
+   max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 80px 6%;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+
+  .about-gif img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 60px 5%;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-text {
+    font-size: 0.9rem;
+  }
+
+  .about-gif img {
+    width: 100%;
+    max-width: 180px;
+  }
+}

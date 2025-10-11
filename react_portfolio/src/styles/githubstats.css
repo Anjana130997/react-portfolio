@@ -1,0 +1,93 @@
+.github {
+  padding: 100px 10%;
+  color: #f5f5f5;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Section Title (match Projects/Experience) */
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #00ced1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeSlideDown 1s ease;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  margin: 0 auto 50px;
+  border-radius: 4px;
+  background: var(--accent, #00ced1);
+  animation: expand 1s ease-in-out;
+}
+
+/* GitHub Grid */
+.github-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: stretch;
+  perspective: 1200px;
+}
+
+/* GitHub Card */
+.github-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 206, 209, 0.15); /* subtle shadow */
+}
+
+/* Hover effect is handled by VanillaTilt, no extra transform needed */
+
+/* GitHub Card Image */
+.github-card img {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Image hover effect */
+.github-card:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 206, 209, 0.2);
+}
+
+/* Animations */
+@keyframes expand {
+  from { width: 0; opacity: 0; }
+  to { width: 80px; opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .github {
+    padding: 60px 5%;
+  }
+
+  .github-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .github-card img {
+    max-width: 90%;
+  }
+}

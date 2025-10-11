@@ -1,0 +1,117 @@
+.contact {
+
+  color: #f5f5f5;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Title */
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #00ced1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeSlideDown 1s ease;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  margin: 0 auto 50px;
+  border-radius: 4px;
+  background: var(--accent, #00ced1);
+  animation: expand 1s ease-in-out;
+}
+
+/* Form Styles */
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 206, 209, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 206, 209, 0.25);
+}
+
+.contact-form .input-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-form input,
+.contact-form textarea {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent, #00ced1);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 206, 209, 0.2);
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.btn-primary {
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  border: 1px solid var(--accent, #00ced1);
+  background: transparent;
+  color: var(--accent, #00ced1);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.btn-primary:hover {
+  background: var(--accent, #00ced1);
+  color: #0a0a0a;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 206, 209, 0.25);
+}
+
+/* Animations */
+@keyframes expand {
+  from { width: 0; opacity: 0; }
+  to { width: 80px; opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 5%;
+  }
+
+  .contact-form .input-group {
+    flex-direction: column;
+  }
+}

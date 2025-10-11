@@ -1,0 +1,151 @@
+.education {
+ 
+  color: #f5f5f5;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Section Title --- */
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #00ced1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeSlideDown 1s ease;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--accent, #00ced1);
+  margin: 0 auto 50px;
+  border-radius: 4px;
+  animation: expand 1s ease-in-out;
+}
+
+/* --- Education Grid --- */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* --- Education Card --- */
+.edu-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease;
+  cursor: pointer;
+  transform: translateY(40px);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+
+.edu-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 206, 209, 0.4);
+  border-color: var(--accent, #00ced1);
+}
+
+/* --- Education Text --- */
+.edu-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #00ced1);
+}
+
+.edu-content p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+
+/* --- Image Styling --- */
+.edu-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 1rem;
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.edu-card:hover .edu-img {
+  transform: scale(1.07) rotate(1deg);
+  filter: brightness(1.1);
+}
+
+/* --- Subtle Glow Border Animation --- */
+.edu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: linear-gradient(120deg, #00ced1, transparent, #00ced1);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.edu-card:hover::before {
+  opacity: 0.3;
+  filter: blur(10px);
+}
+
+/* --- Animation Classes --- */
+.fade-in-up {
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+/* --- Keyframes --- */
+@keyframes expand {
+  from { width: 0; opacity: 0; }
+  to { width: 80px; opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .education {
+    padding: 60px 5%;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .edu-card {
+    padding: 1rem;
+  }
+
+  .edu-img {
+    height: 150px;
+  }
+}

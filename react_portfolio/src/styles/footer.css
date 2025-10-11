@@ -1,0 +1,71 @@
+.site-footer {
+  backdrop-filter: blur(6px);
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-footer p {
+  color: #f5f5f5;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: #f5f5f5;
+  font-size: 1.5rem;
+  transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.footer-social a:hover {
+  color: var(--accent, #00ced1);
+  transform: scale(1.4) rotate(-10deg);
+  text-shadow: 0 0 8px var(--accent, #00ced1);
+}
+
+/* Floating animation for social icons */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Reveal animation for container */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealFade 0.8s ease forwards;
+}
+
+@keyframes revealFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-social a {
+    font-size: 1.3rem;
+  }
+  .site-footer p {
+    font-size: 0.8rem;
+  }
+}
