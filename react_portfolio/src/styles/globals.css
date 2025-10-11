@@ -34,14 +34,14 @@ body {
     background: transparent;
     z-index: 0;
     overflow: hidden;
-    padding: 0; /* removed padding to remove space above navbar & below footer */
+    padding: 0; /* no extra padding around site */
 }
 
 /* Container for content */
 .container {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 0; /* removed padding */
+    padding: 0 1rem; /* horizontal padding for content */
 }
 
 /* Buttons */
@@ -86,4 +86,25 @@ body {
 .lead {
     color: var(--muted);
     max-width: 580px;
+}
+
+/* ========================= */
+/* Spacing between sections */
+/* ========================= */
+.about,section {
+    padding: 3rem 0; /* vertical padding for each section */
+    margin-bottom: 2rem; /* space between sections */
+}
+
+/* Remove extra space after footer */
+section:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Optional: smaller padding for very small screens */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+        margin-bottom: 1.5rem;
+    }
 }
