@@ -50,7 +50,15 @@ export default function Navbar() {
             <a href="#contact" title="Contact"><FaEnvelope /></a>
           </li>
           <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="/Anjana_ES_Resume.pdf" download title="Resume"><FaFileDownload /></a>
+            <a 
+              href="/Anjana_ES_Resume.pdf" 
+              download="Anjana_ES_Resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              title="Resume"
+            >
+              <FaFileDownload />
+            </a>
           </li>
         </ul>
       </nav>
@@ -69,7 +77,17 @@ export default function Navbar() {
           <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
           <li><a href="#github" onClick={closeMenu}>GitHub</a></li>
           <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-          <li><a href="/Anjana_ES_Resume.pdf" download onClick={closeMenu}>Resume</a></li>
+          <li>
+            <a 
+              href="/Anjana_ES_Resume.pdf" 
+              download="Anjana_ES_Resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              onClick={closeMenu}
+            >
+              Resume
+            </a>
+          </li>
         </ul>
       </div>
     </>

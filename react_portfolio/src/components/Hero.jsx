@@ -47,7 +47,15 @@ export default function Hero() {
         {/* Buttons */}
         <div className="hero-cta">
           <a className="btn-primary" href="#projects">See Projects</a>
-          <a className="btn-ghost" href="/Anjana_ES_Resume.pdf" download>Download Resume</a>
+          <a 
+            className="btn-ghost" 
+            href="/Anjana_ES_Resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            download="Anjana_ES_Resume.pdf"
+          >
+           Download Resume
+          </a>
         </div>
       </div>
 
