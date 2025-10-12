@@ -88,9 +88,8 @@
   gap: 0.8rem;
   flex-wrap: wrap;
   margin-top: auto;
-  justify-content: flex-start; /* default alignment for desktop */
+  justify-content: center; /* CENTER buttons on all screen sizes */
 }
-
 /* Links/buttons */
 .btn-link {
   display: inline-flex;

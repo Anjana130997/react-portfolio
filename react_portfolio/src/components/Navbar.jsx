@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles/navbar.css";
-import { FaHome, FaUser, FaBriefcase, FaProjectDiagram, FaGithub, FaEnvelope, FaFileDownload, FaBars, FaTimes, FaCode } from "react-icons/fa";
+import { 
+  FaHome, FaUser, FaBriefcase, FaProjectDiagram, 
+  FaGithub, FaEnvelope, FaFileDownload, FaBars, 
+  FaTimes, FaCode, FaGraduationCap 
+} from "react-icons/fa";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -28,6 +32,9 @@ export default function Navbar() {
             <a href="#about" title="About"><FaUser /></a>
           </li>
           <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
+            <a href="#education" title="Education"><FaGraduationCap /></a>
+          </li>
+          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
             <a href="#experience" title="Experience"><FaBriefcase /></a>
           </li>
           <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
@@ -43,7 +50,7 @@ export default function Navbar() {
             <a href="#contact" title="Contact"><FaEnvelope /></a>
           </li>
           <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="/resume.pdf" download title="Resume"><FaFileDownload /></a>
+            <a href="/Anjana_ES_Resume.pdf" download title="Resume"><FaFileDownload /></a>
           </li>
         </ul>
       </nav>
@@ -56,12 +63,13 @@ export default function Navbar() {
         <ul className={`mobile-menu ${open ? "open" : ""}`}>
           <li><a href="#home" onClick={closeMenu}>Home</a></li>
           <li><a href="#about" onClick={closeMenu}>About</a></li>
+          <li><a href="#education" onClick={closeMenu}>Education</a></li>
           <li><a href="#experience" onClick={closeMenu}>Experience</a></li>
           <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
           <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
           <li><a href="#github" onClick={closeMenu}>GitHub</a></li>
           <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-          <li><a href="/resume.pdf" download onClick={closeMenu}>Resume</a></li>
+          <li><a href="/Anjana_ES_Resume.pdf" download onClick={closeMenu}>Resume</a></li>
         </ul>
       </div>
     </>
