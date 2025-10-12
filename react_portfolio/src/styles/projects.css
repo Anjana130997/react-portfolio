@@ -1,5 +1,4 @@
 .projects {
-  
   color: #f5f5f5;
   text-align: center;
   overflow: hidden;
@@ -89,9 +88,10 @@
   gap: 0.8rem;
   flex-wrap: wrap;
   margin-top: auto;
-  margin-left: 30PX; /* push buttons to bottom */
+  justify-content: flex-start; /* default alignment for desktop */
 }
 
+/* Links/buttons */
 .btn-link {
   display: inline-flex;
   align-items: center;
@@ -161,7 +161,7 @@
   }
 
   .project-buttons {
-    justify-content: center;
-    
+    justify-content: center; /* center buttons on smaller screens */
+    margin-left: 0;           /* remove extra left margin */
   }
 }
