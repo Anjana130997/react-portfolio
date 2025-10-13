@@ -1,13 +1,25 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/githubstats.css";
 import VanillaTilt from "vanilla-tilt";
 
 export default function GitHubStats() {
   const tiltRef = useRef([]);
+  const [visibleImages, setVisibleImages] = useState([]);
 
-const githubImages = [`https://github-readme-stats.vercel.app/api/top-langs/?username=Anjana130997&theme=vue-dark&bg_color=1c1c1c&text_color=f0f0f0&icon_color=73cae7&card_width=300px&title_color=73cae7&show_icons=true&hide_border=true&layout=compact&cache_seconds=3600`,
-  `https://github-readme-streak-stats.herokuapp.com/?user=Anjana130997&theme=shadow-brown&card_width=420&card_height=100&background=1c1c1c&stroke=f3a296&ring=f0f0f0&currStreakNum=73cae7&sideLabels=f0f0f0&fire=EB4506&sideNums=f0f0f0&border=1c1c1c`,
-  `https://github-readme-stats.vercel.app/api?username=Anjana130997&bg_color=1c1c1c&text_color=f0f0f0&icon_color=73cae7&title_color=73cae7&card_width=300px&show_icons=true&hide_border=true&count_private=true&cache_seconds=3600`    ];
+  const githubImages = [
+    "https://github-readme-stats-q6ig9n8n8-anjana-e-ss-projects.vercel.app/api/top-langs/?username=Anjana130997&theme=vue-dark&bg_color=1c1c1c&text_color=f0f0f0&icon_color=73cae7&card_width=300px&title_color=73cae7&show_icons=true&hide_border=true&layout=compact&cache_seconds=3600",
+
+    "https://github-readme-streak-stats.herokuapp.com/?user=Anjana130997&theme=shadow-brown&card_width=420&card_height=100&background=1c1c1c&stroke=f3a296&ring=f0f0f0&currStreakNum=73cae7&sideLabels=f0f0f0&fire=EB4506&sideNums=f0f0f0&border=1c1c1c",
+
+    "https://github-readme-stats-q6ig9n8n8-anjana-e-ss-projects.vercel.app/api?username=Anjana130997&bg_color=1c1c1c&text_color=f0f0f0&icon_color=73cae7&title_color=73cae7&card_width=300px&show_icons=true&hide_border=true&count_private=true&cache_seconds=3600"
+  ];
+
+  // Initialize visibleImages
+  useEffect(() => {
+    setVisibleImages(githubImages);
+  }, []);
+
+  // Initialize VanillaTilt for each card
   useEffect(() => {
     tiltRef.current.forEach((el) => {
       if (el) {
@@ -16,11 +28,16 @@ const githubImages = [`https://github-readme-stats.vercel.app/api/top-langs/?use
           speed: 400,
           glare: true,
           "max-glare": 0.2,
-          scale: 1.05
+          scale: 1.05,
         });
       }
     });
-  }, []);
+  }, [visibleImages]);
+
+  // Handle broken images
+  const handleImageError = (index) => {
+    setVisibleImages((prev) => prev.filter((_, i) => i !== index));
+  };
 
   return (
     <section id="github" className="github reveal">
@@ -30,13 +47,18 @@ const githubImages = [`https://github-readme-stats.vercel.app/api/top-langs/?use
       </div>
 
       <div className="github-grid reveal">
-        {githubImages.map((src, i) => (
+        {visibleImages.map((src, i) => (
           <div
             key={i}
             ref={(el) => (tiltRef.current[i] = el)}
             className="github-card"
           >
-            <img src={src} alt={`GitHub Stats ${i + 1}`} loading="eager" />
+            <img
+              src={src}
+              alt={`GitHub Stats ${i + 1}`}
+              onError={() => handleImageError(i)}
+              loading="eager"
+            />
           </div>
         ))}
       </div>
