@@ -1,11 +1,9 @@
-/* GitHub Section */
 .github {
   color: #f5f5f5;
   text-align: center;
   overflow: hidden;
   position: relative;
   padding: 80px 5%;
-  
 }
 
 /* Section Title */
@@ -35,7 +33,7 @@
   justify-items: center;
   align-items: stretch;
   perspective: 1200px;
-  grid-auto-rows: auto; /* keeps rows consistent if some cards are removed */
+  grid-auto-rows: auto;
 }
 
 /* GitHub Card */
@@ -52,12 +50,6 @@
   transition: transform 0.6s ease, box-shadow 0.4s ease, opacity 0.5s ease;
   box-shadow: 0 4px 10px rgba(0, 206, 209, 0.15);
   opacity: 1;
-}
-
-/* Optional: fading effect if card is removed */
-.github-card.removed {
-  opacity: 0;
-  pointer-events: none;
 }
 
 /* GitHub Card Image */
