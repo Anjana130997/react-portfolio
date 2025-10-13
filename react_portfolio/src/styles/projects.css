@@ -5,7 +5,7 @@
   position: relative;
 }
 
-/* Section Title matches Experience section */
+/* Section Title */
 .section-title h2 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -78,8 +78,15 @@
 .details {
   font-size: 0.95rem;
   color: #ccc;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.5;
+}
+
+/* Tech Stack */
+.tech-stack {
+  font-size: 0.9rem;
+  color: #00ced1;
+  margin-bottom: 1rem;
 }
 
 /* Buttons aligned at bottom */
@@ -88,8 +95,9 @@
   gap: 0.8rem;
   flex-wrap: wrap;
   margin-top: auto;
-  justify-content: center; /* CENTER buttons on all screen sizes */
+  justify-content: center; /* Center buttons on all screen sizes */
 }
+
 /* Links/buttons */
 .btn-link {
   display: inline-flex;
@@ -160,7 +168,7 @@
   }
 
   .project-buttons {
-    justify-content: center; /* center buttons on smaller screens */
-    margin-left: 0;           /* remove extra left margin */
+    justify-content: center; 
+    margin-left: 0; 
   }
 }

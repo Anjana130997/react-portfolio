@@ -3,6 +3,7 @@ import VanillaTilt from 'vanilla-tilt';
 import '../styles/hero.css';
 import profile from '../assets/profile.jpg';
 import TextType from './TextType';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export default function Hero() {
   const cardRef = useRef(null);
@@ -18,6 +19,20 @@ export default function Hero() {
       });
     }
   }, []);
+
+  // Download + Open resume simultaneously
+  const handleResumeClick = () => {
+    const link = document.createElement('a');
+    link.href = "/Anjana_ES_Resume.pdf";
+    link.download = "Anjana_ES_Resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    window.open("/Anjana_ES_Resume.pdf", "_blank", "noopener,noreferrer");
+  };
 
   return (
     <section id="home" className="hero container">
@@ -47,14 +62,19 @@ export default function Hero() {
         {/* Buttons */}
         <div className="hero-cta">
           <a className="btn-primary" href="#projects">See Projects</a>
-          <a 
-            className="btn-ghost" 
-            href="/Anjana_ES_Resume.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            download="Anjana_ES_Resume.pdf"
-          >
-           Download Resume
+          <button className="btn-ghost" onClick={handleResumeClick}>Download Resume</button>
+        </div>
+
+        {/* Social Icons */}
+        <div className="hero-social">
+          <a href="https://www.linkedin.com/in/anjana-sureshbabu130997/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/Anjana130997" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <FaGithub />
+          </a>
+          <a href="mailto:anjana130997@gmail.com" title="Email">
+            <FaEnvelope />
           </a>
         </div>
       </div>

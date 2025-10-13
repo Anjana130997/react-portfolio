@@ -31,6 +31,12 @@ export default function Skills() {
         });
       }
     });
+
+    return () => {
+      tiltRefs.current.forEach((el) => {
+        if (el && el.vanillaTilt) el.vanillaTilt.destroy();
+      });
+    };
   }, []);
 
   const skills = [

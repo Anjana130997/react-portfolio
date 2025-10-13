@@ -1,83 +1,88 @@
-/* Add padding to main content */
-.hero,
-#home {
-  padding-top: 80px; /* adjust based on navbar height */
+.hero, #home { 
+  padding-top: 80px; 
 }
 
-/* Centered Fixed Top Dock Navbar */
+/* ===== Desktop Dock Navbar ===== */
 .dock-navbar.top {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  width: 75%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  padding: 0.5rem 8rem;
-  border-radius: 50px;
+  padding: 0.5rem 0;
+  border-radius: 0 0 50px 50px;
+  border-bottom: 2px solid #00ced1;
   box-shadow: 0 5px 25px rgba(0,0,0,0.2);
   z-index: 2000;
   display: flex;
   justify-content: center;
 }
 
-
 .dock-menu {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.dock-menu li {
-  perspective: 1000px; /* Enable 3D tilt */
-}
-
-.dock-menu li a {
+.dock-menu li a,
+.dock-menu li .resume-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #fff;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  transition: transform 0.2s ease, color 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
   position: relative;
 }
 
-/* Tilt effect */
-.dock-menu li a:hover {
-  transform: rotateX(calc((var(--mouse-y, 0) - 300) / 30deg))
-             rotateY(calc((var(--mouse-x, 0) - 300) / 30deg))
-             scale(1.3);
+/* Hover scaling */
+.dock-menu li a:hover,
+.dock-menu li .resume-btn:hover {
   color: #00ced1;
   background: rgba(255,255,255,0.1);
 }
 
-/* Tooltip */
-.dock-menu li a::after {
-  content: attr(title);
+/* ===== Down label only ===== */
+.dock-menu li a::after,
+.dock-menu li .resume-btn::after {
+  content: attr(data-label);
   position: absolute;
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.75rem;
   color: #fff;
-  white-space: nowrap;
+  background: rgba(0, 206, 209, 0.15);
+  padding: 3px 8px;
+  border-radius: 6px;
   opacity: 0;
-  transition: opacity 0.3s ease, top 0.3s ease;
+  transition: opacity 0.3s ease, top 0.3s ease, background 0.3s ease;
+  pointer-events: none;
 }
 
-.dock-menu li a:hover::after {
+/* Highlighted glow label on hover */
+.dock-menu li a:hover::after,
+.dock-menu li .resume-btn:hover::after {
   opacity: 1;
   top: 70px;
+  background: rgba(0, 206, 209, 0.3);
+  box-shadow: 0 0 10px rgba(0, 206, 209, 0.6);
 }
 
-/* ===== Mobile Hamburger ===== */
-.hamburger-menu {
-  display: none;
-  position: relative;
-  z-index: 3000; /* higher than hero/profile card */
+/* ===== Mobile Navbar ===== */
+.hamburger-menu { 
+  display: none; 
+  position: relative; 
+  z-index: 3000; 
 }
 
 .hamburger-icon {
@@ -85,7 +90,7 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 3001; /* above everything */
+  z-index: 3001;
   color: #fff;
   cursor: pointer;
 }
@@ -95,39 +100,63 @@
   top: 60px;
   right: -100%;
   width: 70%;
-  background: rgba(0,0,0,0.9);
+  max-height: 90vh;
+  background: rgba(0,0,0,0.95);
   backdrop-filter: blur(10px);
   list-style: none;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  transition: right 0.3s ease-in-out;
-  border-radius: 0 0 0 15px;
-  z-index: 3000; /* higher than profile card */
+  transition: right 0.4s ease-in-out;
+  border-radius: 0 0 15px 15px;
+  z-index: 3000;
+  overflow-y: auto;
 }
 
-.mobile-menu.open {
-  right: 0;
+.mobile-menu.open { right: 0; }
+
+.mobile-menu li {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: menuItemFade 0.35s forwards;
 }
 
-.mobile-menu li a {
+.mobile-menu li a,
+.mobile-menu li .resume-btn {
   text-decoration: none;
   color: #fff;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  position: relative;
 }
 
-.mobile-menu li a:hover {
+.mobile-menu li a:hover,
+.mobile-menu li .resume-btn:hover {
   color: #00ced1;
+  text-shadow: 0 0 8px rgba(0, 206, 209, 0.7);
+}
+
+@keyframes menuItemFade {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1024px) { 
+  .dock-navbar.top { width: 90%; } 
+}
+
 @media (max-width: 768px) {
-  .dock-navbar.top {
-    display: none;
-  }
-  .hamburger-menu {
-    display: block;
-  }
+  .dock-navbar.top { display: none; }
+  .hamburger-menu { display: block; }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu { width: 80%; }
 }

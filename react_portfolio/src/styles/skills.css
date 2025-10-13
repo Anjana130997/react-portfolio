@@ -1,5 +1,4 @@
 .skills-section {
-  
   color: #f5f5f5;
   text-align: center;
   overflow: hidden;
@@ -98,7 +97,7 @@
 }
 
 .glass-icon-btn:hover {
-  transform: translateY(-10px) scale(1.08) rotateX(8deg) rotateY(8deg);
+  transform: translateY(-10px) scale(1.08);
   box-shadow: 0 15px 25px rgba(0, 206, 209, 0.3);
 }
 
@@ -111,19 +110,21 @@
 
 .icon-btn__label {
   position: absolute;
-  bottom: -1.8em;
-  width: 100%;
-  font-size: 0.9em;
+  bottom: -1.2em;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: max-content;
+  font-size: 0.95em;
   opacity: 0;
-  transform: translateY(0);
   color: #bbb;
   text-align: center;
+  font-weight: 500;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .glass-icon-btn:hover .icon-btn__label {
   opacity: 1;
-  transform: translateY(0.5em);
+  transform: translateX(-50%) translateY(0.4em);
 }
 
 /* Right GIF */

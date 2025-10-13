@@ -1,10 +1,16 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import '../styles/contact.css';
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import "../styles/contact.css";
 
 export default function Contact() {
   const form = useRef();
   const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState({ show: false, type: "success", message: "" });
+
+  const showToast = (type, message) => {
+    setToast({ show: true, type, message });
+    setTimeout(() => setToast({ show: false, type, message: "" }), 3500);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -12,20 +18,20 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        'service_x0kv3uo',      // ← your Service ID
-        'template_50hzvvs',      // ← your Template ID
+        "service_x0kv3uo",      // ← your Service ID
+        "template_50hzvvs",     // ← your Template ID
         form.current,
-        '-zlaOQ1P9_q_7aRSW'            // ← your Public Key
+        "-zlaOQ1P9_q_7aRSW"    // ← your Public Key
       )
       .then(
         () => {
-          alert('✅ Message sent successfully!');
+          showToast("success", "Message sent successfully!");
           form.current.reset();
           setSending(false);
         },
         (error) => {
-          alert('❌ Failed to send message. Please try again later.');
           console.error(error);
+          showToast("error", "Failed to send message. Try again later.");
           setSending(false);
         }
       );
@@ -45,9 +51,16 @@ export default function Contact() {
         </div>
         <textarea name="message" placeholder="Your Message" required />
         <button type="submit" className="btn-primary" disabled={sending}>
-          {sending ? 'Sending...' : 'Send Message'}
+          {sending ? "Sending..." : "Send Message"}
         </button>
       </form>
+
+      {/* Toast Modal */}
+      {toast.show && (
+        <div className={`toast-modal ${toast.type}`}>
+          {toast.message}
+        </div>
+      )}
     </section>
   );
 }

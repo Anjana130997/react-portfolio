@@ -1,9 +1,10 @@
+/* Contact Section */
 .contact {
-
   color: #f5f5f5;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  padding: 80px 5%;
 }
 
 /* Section Title */
@@ -35,13 +36,13 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 206, 209, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 206, 209, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 206, 209, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 206, 209, 0.25);
 }
 
 .contact-form .input-group {
@@ -66,7 +67,7 @@
 .contact-form textarea:focus {
   border-color: var(--accent, #00ced1);
   outline: none;
-  box-shadow: 0 0 10px rgba(0, 206, 209, 0.2);
+  box-shadow: 0 0 10px rgba(0, 206, 209, 0.25);
 }
 
 .contact-form textarea {
@@ -94,7 +95,52 @@
   box-shadow: 0 4px 12px rgba(0, 206, 209, 0.25);
 }
 
+/* Small Bottom Notification Box (Toast Modal) */
+.toast-modal {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 1rem 1.2rem;
+  background: #111; /* matches navbar dark */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  color: #f5f5f5;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: modalIn 0.4s forwards, modalOut 0.4s forwards 3s;
+  border-bottom: 4px solid var(--accent, #00ced1); /* blue stripe at bottom */
+}
+
+.toast-modal.success {
+  border-bottom-color: var(--accent, #00ced1);
+}
+.toast-modal.error {
+  border-bottom-color: #ff6b6b;
+}
+.toast-modal.info {
+  border-bottom-color: #17a2b8;
+}
+
 /* Animations */
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(20px); }
+}
+
 @keyframes expand {
   from { width: 0; opacity: 0; }
   to { width: 80px; opacity: 1; }
@@ -113,5 +159,12 @@
 
   .contact-form .input-group {
     flex-direction: column;
+  }
+
+  .toast-modal {
+    bottom: 15px;
+    right: 15px;
+    min-width: 200px;
+    font-size: 0.9rem;
   }
 }

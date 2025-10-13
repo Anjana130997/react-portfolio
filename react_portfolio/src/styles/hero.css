@@ -1,11 +1,10 @@
+/* ===== Hero Section ===== */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
   margin-top: 80px;
-  
- 
 }
 
 /* Left Side */
@@ -55,6 +54,7 @@
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -75,6 +75,24 @@
 .btn-ghost:hover {
   background: var(--accent, #00ced1);
   color: #0a0a0a;
+}
+
+/* Social Icons */
+.hero-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hero-social a {
+  font-size: 1.6rem;
+  color: var(--accent, #00ced1);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hero-social a:hover {
+  color: #00e5ff;
+  transform: translateY(-4px) scale(1.2);
 }
 
 /* Right Side */
@@ -128,7 +146,7 @@
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
@@ -145,13 +163,11 @@
 
   .typing-wrapper {
     justify-content: center;
-    text-align: center;
   }
 
   .hero-cta {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
 
   .hero-right {
@@ -181,5 +197,9 @@
 
   h1 {
     font-size: 1.6rem;
+  }
+
+  .hero-social a {
+    font-size: 1.4rem;
   }
 }

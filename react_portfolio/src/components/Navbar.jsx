@@ -1,92 +1,96 @@
 import React, { useState, useEffect } from "react";
 import "../styles/navbar.css";
 import { 
-  FaHome, FaUser, FaBriefcase, FaProjectDiagram, 
+  FaHome, FaUser, FaProjectDiagram, 
   FaGithub, FaEnvelope, FaFileDownload, FaBars, 
   FaTimes, FaCode, FaGraduationCap 
 } from "react-icons/fa";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Track mouse for tilt effect
+  // Smooth scroll
   useEffect(() => {
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const handleSmoothScroll = (e) => {
+      const href = e.currentTarget.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+        setOpen(false);
+      }
+    };
+
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach((link) => link.addEventListener("click", handleSmoothScroll));
+
+    return () => {
+      links.forEach((link) =>
+        link.removeEventListener("click", handleSmoothScroll)
+      );
+    };
   }, []);
 
+  // Lock scroll when menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
+
   const toggleMenu = () => setOpen(!open);
-  const closeMenu = () => setOpen(false);
+
+  // Resume download
+  const handleResumeClick = () => {
+    const link = document.createElement("a");
+    link.href = "/Anjana_ES_Resume.pdf";
+    link.download = "Anjana_ES_Resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    window.open("/Anjana_ES_Resume.pdf", "_blank", "noopener,noreferrer");
+  };
 
   return (
     <>
-      {/* ===== Desktop Sticky Top Navbar ===== */}
+      {/* ===== Desktop Navbar ===== */}
       <nav className="dock-navbar top">
         <ul className="dock-menu">
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#home" title="Home"><FaHome /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#about" title="About"><FaUser /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#education" title="Education"><FaGraduationCap /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#experience" title="Experience"><FaBriefcase /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#skills" title="Skills"><FaCode /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#projects" title="Projects"><FaProjectDiagram /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#github" title="GitHub"><FaGithub /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a href="#contact" title="Contact"><FaEnvelope /></a>
-          </li>
-          <li style={{ "--mouse-x": mousePos.x, "--mouse-y": mousePos.y }}>
-            <a 
-              href="/Anjana_ES_Resume.pdf" 
-              download="Anjana_ES_Resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              title="Resume"
-            >
+          <li><a href="#home" data-label="Home"><FaHome /></a></li>
+          <li><a href="#about" data-label="About"><FaUser /></a></li>
+          <li><a href="#education" data-label="Education"><FaGraduationCap /></a></li>
+          <li><a href="#skills" data-label="Skills"><FaCode /></a></li>
+          <li><a href="#projects" data-label="Projects"><FaProjectDiagram /></a></li>
+          <li><a href="#github" data-label="GitHub"><FaGithub /></a></li>
+          <li><a href="#contact" data-label="Contact"><FaEnvelope /></a></li>
+          <li>
+            <button className="resume-btn" onClick={handleResumeClick} data-label="Resume">
               <FaFileDownload />
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
 
-      {/* ===== Mobile Hamburger Navbar ===== */}
+      {/* ===== Mobile Navbar ===== */}
       <div className="hamburger-menu">
         <div className="hamburger-icon" onClick={toggleMenu}>
           {open ? <FaTimes /> : <FaBars />}
         </div>
         <ul className={`mobile-menu ${open ? "open" : ""}`}>
-          <li><a href="#home" onClick={closeMenu}>Home</a></li>
-          <li><a href="#about" onClick={closeMenu}>About</a></li>
-          <li><a href="#education" onClick={closeMenu}>Education</a></li>
-          <li><a href="#experience" onClick={closeMenu}>Experience</a></li>
-          <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
-          <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
-          <li><a href="#github" onClick={closeMenu}>GitHub</a></li>
-          <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-          <li>
-            <a 
-              href="/Anjana_ES_Resume.pdf" 
-              download="Anjana_ES_Resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              onClick={closeMenu}
-            >
+          {["home", "about", "education", "skills", "projects", "github", "contact"].map((item, i) => (
+            <li key={item} style={{ animationDelay: `${i * 0.05}s` }}>
+              <a href={`#${item}`} onClick={() => setOpen(false)}>
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            </li>
+          ))}
+          <li style={{ animationDelay: `0.35s` }}>
+            <button className="resume-btn" onClick={handleResumeClick}>
               Resume
-            </a>
+            </button>
           </li>
         </ul>
       </div>
