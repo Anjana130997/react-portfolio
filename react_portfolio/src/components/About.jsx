@@ -12,9 +12,7 @@ export default function About() {
       <div className="about-grid">
         <div className="about-text reveal">
           <p>
-            I am a passionate web developer who loves combining clean code with strong design sense. I focus on building interfaces 
-            that are visually appealing, user-friendly, and optimized for performance. My workflow includes research, prototyping, 
-            iterative testing, and collaboration with cross-functional teams to deliver high-quality web experiences.
+           I’m a passionate Full Stack Web Developer who blends clean code with creative design to build responsive, high-performing web applications. I focus on developing user-friendly interfaces and robust backend systems through research, prototyping, and efficient problem-solving. I’m always eager to learn new technologies and contribute to building innovative digital solutions.
           </p>
         </div>
 
