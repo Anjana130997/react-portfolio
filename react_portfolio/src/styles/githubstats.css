@@ -33,7 +33,6 @@
   justify-items: center;
   align-items: stretch;
   perspective: 1200px;
-  grid-auto-rows: auto;
 }
 
 /* GitHub Card */
@@ -73,6 +72,7 @@
 .fade-in {
   animation: fadeIn 0.8s ease forwards;
 }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -88,50 +88,22 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ========================= */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .github {
-    padding: 60px 4%;
-  }
-  .github-grid {
-    gap: 1.5rem;
-  }
+  .github { padding: 60px 4%; }
+  .github-grid { gap: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-  .github {
-    padding: 50px 5%;
-  }
-
-  .github-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .github-card {
-    width: 100%;
-    max-width: 95%;
-    padding: 0.8rem;
-  }
-
-  .github-card img {
-    max-width: 100%;
-    border-radius: 10px;
-  }
+  .github { padding: 50px 5%; }
+  .github-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .github-card { width: 100%; max-width: 95%; padding: 0.8rem; }
+  .github-card img { max-width: 100%; border-radius: 10px; }
 }
 
 @media (max-width: 480px) {
-  .section-title h2 {
-    font-size: 1.8rem;
-  }
-
-  .github-card {
-    padding: 0.6rem;
-    border-radius: 10px;
-  }
-
-  .github-card img {
-    border-radius: 8px;
-    max-width: 100%;
-  }
+  .section-title h2 { font-size: 1.8rem; }
+  .github-card { padding: 0.6rem; border-radius: 10px; }
+  .github-card img { border-radius: 8px; max-width: 100%; }
 }

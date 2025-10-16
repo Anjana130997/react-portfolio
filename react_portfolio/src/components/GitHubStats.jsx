@@ -62,11 +62,12 @@ export default function GitHubStats() {
             key={i}
             ref={(el) => (tiltRef.current[i] = el)}
             className="github-card fade-in"
+            style={{ animationDelay: `${i * 0.3}s` }}
           >
             <img
               src={src}
               alt={`GitHub Stats ${i + 1}`}
-              loading="eager"
+              loading="lazy"
             />
           </div>
         ))}
