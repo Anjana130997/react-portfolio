@@ -14,22 +14,23 @@ const projects = [
     live: "https://brickssy.netlify.app/",
     github: "https://github.com/Anjana130997/Bricksy.git",
   },
-  {
-    title: "RenovationTracker",
-    desc: "A web-based tool to help homeowners and contractors plan, track, and manage renovation projects, including budgets, tasks, and inventory.",
-    tech: ["HTML", "CSS", "JavaScript", "JSON"],
-    img: renovationTracker,
-    live: "https://renovationtracker.netlify.app/",
-    github: "https://github.com/Anjana130997/RenovationTracker.git",
-  },
-  {
-    title: "Justice Juggernauts",
-    desc: "A collaborative project for managing justice-related cases, with features for tracking and organizing tasks efficiently.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    img: justiceJuggernauts,
-    live: "https://moviebuff-ticket-booking.netlify.app/",
-    github: "https://github.com/Dhananjay155/Justice-Juggernauts_023.git",
-  },
+{
+  title: "Renovation Tracker",
+  desc: "An individual web application designed to help homeowners and contractors efficiently plan and manage renovation projects, including budgets, tasks, and inventory.",
+  tech: ["HTML", "CSS", "JavaScript", "JSON"],
+  img: renovationTracker,
+  live: "https://renovationtracker.netlify.app/",
+  github: "https://github.com/Anjana130997/RenovationTracker.git",
+},
+
+ {
+  title: "Movie_Buff",
+  desc: "A collaborative web application for booking movies online, allowing users to browse showtimes, select seats, and manage bookings efficiently.",
+  tech: ["HTML", "CSS", "JavaScript"],
+  img: justiceJuggernauts,
+  live: "https://moviebuff-ticket-booking.netlify.app/",
+  github: "https://github.com/Dhananjay155/Justice-Juggernauts_023.git",
+},
 ];
 
 export default function Projects() {
