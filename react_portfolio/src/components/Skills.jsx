@@ -40,17 +40,17 @@ export default function Skills() {
   }, []);
 
   const skills = [
-    { name: "HTML", icon: <SiHtml5 /> },
-    { name: "CSS", icon: <SiCss3 /> },
-    { name: "JavaScript", icon: <SiJavascript /> },
-    { name: "ReactJS", icon: <SiReact /> },
-    { name: "NodeJS", icon: <SiNodedotjs /> },
-    { name: "Git", icon: <SiGit /> },
-    { name: "Python", icon: <SiPython /> },
-    { name: "Tailwind", icon: <SiTailwindcss /> },
-    { name: "Bootstrap", icon: <SiBootstrap /> },
-    { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "SQL", icon: <SiMysql /> },
+    { name: "HTML", icon: <SiHtml5 color="#E44D26" /> },
+    { name: "CSS", icon: <SiCss3 color="#1572B6" /> },
+    { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+    { name: "ReactJS", icon: <SiReact color="#61DBFB" /> },
+    { name: "NodeJS", icon: <SiNodedotjs color="#83CD29" /> },
+    { name: "Git", icon: <SiGit color="#F05032" /> },
+    { name: "Python", icon: <SiPython color="#3776AB" /> },
+    { name: "Tailwind", icon: <SiTailwindcss color="#38BDF8" /> },
+    { name: "Bootstrap", icon: <SiBootstrap color="#7952B3" /> },
+    { name: "MongoDB", icon: <SiMongodb color="#4DB33D" /> },
+    { name: "SQL", icon: <SiMysql color="#00758F" /> },
   ];
 
   return (

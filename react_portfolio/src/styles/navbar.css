@@ -148,15 +148,53 @@
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 1024px) { 
-  .dock-navbar.top { width: 90%; } 
+/* ===== Responsive ===== */
+
+/* Tablet View (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dock-navbar.top {
+    width: 85%;
+    padding: 0.5rem 0;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .dock-menu {
+    gap: 2rem; /* reduce gap for better spacing */
+  }
+
+  .dock-menu li a,
+  .dock-menu li .resume-btn {
+    font-size: 1.3rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  .dock-menu li a::after,
+  .dock-menu li .resume-btn::after {
+    font-size: 0.7rem;
+    top: 55px;
+  }
+
+  .dock-menu li a:hover::after,
+  .dock-menu li .resume-btn:hover::after {
+    top: 65px;
+  }
 }
 
+/* Mobile view (below 768px) */
 @media (max-width: 768px) {
-  .dock-navbar.top { display: none; }
-  .hamburger-menu { display: block; }
+  .dock-navbar.top { 
+    display: none; 
+  }
+  .hamburger-menu { 
+    display: block; 
+  }
 }
 
+/* Very small phones (below 480px) */
 @media (max-width: 480px) {
-  .mobile-menu { width: 80%; }
+  .mobile-menu { 
+    width: 80%; 
+  }
 }
+

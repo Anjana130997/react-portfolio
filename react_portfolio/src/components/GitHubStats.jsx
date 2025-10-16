@@ -12,7 +12,7 @@ export default function GitHubStats() {
     "https://github-readme-stats.vercel.app/api/top-langs/?username=anjana130997&layout=compact&theme=radical&hide_border=true"
   ];
 
-  // Preload images to check if they exist
+  // Preload and validate images
   useEffect(() => {
     const loadImages = async () => {
       const validImages = [];
@@ -26,7 +26,7 @@ export default function GitHubStats() {
           });
           validImages.push(src);
         } catch (err) {
-          // image failed to load, skip it
+          console.error(`Failed to load: ${src}`);
         }
       }
       setVisibleImages(validImages);
@@ -34,7 +34,7 @@ export default function GitHubStats() {
     loadImages();
   }, []);
 
-  // Initialize VanillaTilt for each card
+  // Initialize tilt effect
   useEffect(() => {
     tiltRef.current.forEach((el) => {
       if (el) {
@@ -61,7 +61,7 @@ export default function GitHubStats() {
           <div
             key={i}
             ref={(el) => (tiltRef.current[i] = el)}
-            className="github-card"
+            className="github-card fade-in"
           >
             <img
               src={src}

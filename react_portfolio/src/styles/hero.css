@@ -5,6 +5,7 @@
   justify-content: space-between;
   gap: 3rem;
   margin-top: 80px;
+  padding: 2rem 4rem;
 }
 
 /* Left Side */
@@ -31,7 +32,6 @@
 }
 
 /* Highlight Text */
-.highlight,
 .accent {
   color: var(--accent, #00ced1);
   font-weight: 600;
@@ -97,7 +97,7 @@
 
 /* Right Side */
 .hero-right {
-  flex: 0 0 300px;
+  flex: 0 0 320px;
   display: flex;
   justify-content: center;
   perspective: 1500px;
@@ -105,8 +105,8 @@
 
 /* Profile Card */
 .profile-card {
-  width: 250px;
-  height: 340px;
+  width: 270px;
+  height: 360px;
   background: #111;
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
@@ -146,14 +146,42 @@
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
+/* ===== Tablet (768px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem 3rem;
+  }
+
+  .hero-left {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .typing-wrapper {
+    font-size: 1.3rem;
+  }
+
+  .hero-right {
+    flex: 0 0 280px;
+  }
+
+  .profile-card {
+    width: 240px;
+    height: 320px;
+  }
+}
+
+/* ===== Mobile (below 768px) ===== */
+@media (max-width: 768px) {
   .hero {
     flex-direction: column;
     align-items: center;
-    padding-top: 4rem;
     text-align: center;
     gap: 2rem;
+    padding: 3rem 1.5rem;
   }
 
   .hero-left {
@@ -163,6 +191,7 @@
 
   .typing-wrapper {
     justify-content: center;
+    font-size: 1.1rem;
   }
 
   .hero-cta {
@@ -172,12 +201,25 @@
 
   .hero-right {
     order: -1;
-    flex: 0 0 240px;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .profile-card {
+    width: 220px;
+    height: 300px;
   }
 }
 
-@media (max-width: 600px) {
+/* ===== Small Phones (below 480px) ===== */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .typing-wrapper {
+    font-size: 0.95rem;
+  }
+
   .profile-card {
     width: 200px;
     height: 280px;
@@ -189,14 +231,6 @@
 
   .card-info p {
     font-size: 0.8rem;
-  }
-
-  .typing-wrapper {
-    font-size: 0.95rem;
-  }
-
-  h1 {
-    font-size: 1.6rem;
   }
 
   .hero-social a {
